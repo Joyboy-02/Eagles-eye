@@ -67,7 +67,7 @@ const CATEGORIES = [
 
 export function HomePage() {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col pt-16">
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
       {/* ── Hero ── */}
       <section className="relative flex flex-col items-center justify-center text-center px-4 py-28 sm:py-36 overflow-hidden">
         {/* Ambient glow */}

@@ -183,7 +183,7 @@ export function DetectorPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col pt-16">
+    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
       {/* Section header */}
       <div className="border-b border-slate-800/60 bg-slate-900/50 px-4 sm:px-6 py-4">
         <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
