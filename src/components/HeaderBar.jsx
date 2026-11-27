@@ -11,7 +11,7 @@ export function HeaderBar() {
           <div>
             <div className="flex items-center gap-2.5 flex-wrap">
               <h1 className="text-lg sm:text-xl font-bold tracking-tight text-slate-50">
-                PII Data Sanitizer
+                eagles-eye
               </h1>
               <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/40 shadow-sm">
                 <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
