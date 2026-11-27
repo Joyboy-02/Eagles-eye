@@ -1,4 +1,6 @@
 import { useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
 import {
   DEFAULT_ENABLED_CATEGORIES,
   detectPII,
@@ -183,18 +185,27 @@ export function DetectorPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
+    <div className="min-h-screen flex flex-col">
       {/* Section header */}
-      <div className="border-b border-slate-800/60 bg-slate-900/50 px-4 sm:px-6 py-4">
+      <div className="border-b border-white/40 bg-white/85 backdrop-blur-md px-4 sm:px-6 py-4 shadow-sm">
         <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-          <div>
-            <h1 className="text-xl font-bold text-slate-50">PII Detector</h1>
-            <p className="text-xs text-slate-400 mt-0.5">
-              Paste text or upload a file — detection, redaction, and exports run 100% in your browser.
-            </p>
+          <div className="flex items-center gap-3">
+            <Link
+              to="/"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              Home
+            </Link>
+            <div>
+              <h1 className="text-xl font-bold text-slate-800">eagles-eye Detector</h1>
+              <p className="text-xs text-slate-500 mt-0.5">
+                Paste text or upload a file — detection, redaction, and exports run 100% in your browser.
+              </p>
+            </div>
           </div>
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/40">
-            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-violet-100 text-violet-700 border border-violet-300 self-start sm:self-auto">
+            <span className="h-2 w-2 rounded-full bg-violet-500 animate-pulse" />
             100% Client-Side / Zero Data Leaves Browser
           </span>
         </div>
@@ -265,7 +276,7 @@ export function DetectorPage() {
         />
       </main>
 
-      <footer className="border-t border-slate-900 py-4 px-4 text-center text-xs text-slate-500">
+      <footer className="py-4 px-4 text-center text-xs text-white/75">
         All scanning, Luhn/Verhoeff checksum validation, pseudonymization, and exports execute 100% locally inside your browser. Zero bytes are transmitted over the network.
       </footer>
     </div>

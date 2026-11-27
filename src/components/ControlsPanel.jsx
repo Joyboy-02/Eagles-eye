@@ -72,11 +72,11 @@ export function ControlsPanel({
   };
 
   return (
-    <section className="rounded-2xl bg-slate-900/70 border border-slate-800 p-4 sm:p-5 flex flex-col gap-5 shadow-xl shadow-slate-950/40">
+    <section className="rounded-2xl bg-white/95 backdrop-blur-md border border-white/60 p-4 sm:p-5 flex flex-col gap-5 shadow-xl shadow-black/10">
       {/* Redaction Mode */}
       <div className="flex flex-col gap-2.5">
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+          <h2 className="text-xs font-bold uppercase tracking-wider text-slate-500">
             Redaction Mode
           </h2>
           {redactionMode === REDACTION_MODES.PSEUDONYM && (
@@ -84,7 +84,7 @@ export function ControlsPanel({
               type="button"
               onClick={onExportPseudonyms}
               disabled={pseudonymCount === 0}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium bg-amber-500/15 text-amber-300 border border-amber-500/40 hover:bg-amber-500/25 disabled:opacity-40 disabled:cursor-not-allowed transition cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold bg-amber-50 text-amber-800 border border-amber-300 hover:bg-amber-100 disabled:opacity-40 disabled:cursor-not-allowed transition cursor-pointer"
             >
               <Download className="w-3.5 h-3.5" />
               Export Mapping JSON ({pseudonymCount})
@@ -102,23 +102,23 @@ export function ControlsPanel({
                 onClick={() => onChangeMode(card.id)}
                 className={`text-left rounded-xl p-3 border transition cursor-pointer flex flex-col gap-1 ${
                   active
-                    ? 'bg-emerald-500/10 border-emerald-500/60 ring-1 ring-emerald-500/30'
-                    : 'bg-slate-950/70 border-slate-800 hover:border-slate-700'
+                    ? 'bg-violet-50 border-violet-500 ring-1 ring-violet-500/30 shadow-sm'
+                    : 'bg-slate-50 border-slate-200 hover:border-slate-300 hover:bg-white'
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-100">
-                    <Icon className={`w-4 h-4 ${active ? 'text-emerald-400' : 'text-slate-400'}`} />
+                  <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-800">
+                    <Icon className={`w-4 h-4 ${active ? 'text-violet-600' : 'text-slate-400'}`} />
                     {card.title}
                   </span>
                   {active && (
-                    <span className="text-[10px] font-bold uppercase px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300">
+                    <span className="text-[10px] font-bold uppercase px-1.5 py-0.5 rounded bg-violet-600 text-white">
                       Active
                     </span>
                   )}
                 </div>
-                <p className="text-[11px] text-slate-400">{card.desc}</p>
-                <code className="text-[11px] text-emerald-300/90 font-mono mt-0.5 truncate">
+                <p className="text-[11px] text-slate-500">{card.desc}</p>
+                <code className="text-[11px] text-violet-700 font-mono mt-0.5 truncate">
                   {card.example}
                 </code>
               </button>
@@ -128,9 +128,9 @@ export function ControlsPanel({
       </div>
 
       {/* Category Toggles & Checksum Options */}
-      <div className="grid grid-cols-1 xl:grid-cols-12 gap-4 pt-1 border-t border-slate-800/80">
+      <div className="grid grid-cols-1 xl:grid-cols-12 gap-4 pt-3 border-t border-slate-200">
         <div className="xl:col-span-7 flex flex-col gap-2.5">
-          <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+          <h2 className="text-xs font-bold uppercase tracking-wider text-slate-500">
             Detection Categories
           </h2>
           <div className="flex flex-wrap gap-2">
@@ -144,21 +144,21 @@ export function ControlsPanel({
                   type="button"
                   onClick={() => onToggleCategory(meta.id)}
                   title={meta.description}
-                  className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-medium border transition cursor-pointer ${
+                  className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-semibold border transition cursor-pointer ${
                     enabled
                       ? style.badge
-                      : 'bg-slate-950/60 text-slate-500 border-slate-800 hover:border-slate-700'
+                      : 'bg-slate-100 text-slate-400 border-slate-200 hover:border-slate-300'
                   }`}
                 >
                   <span
                     className={`w-2 h-2 rounded-full ${
-                      enabled ? style.dot : 'bg-slate-600'
+                      enabled ? style.dot : 'bg-slate-400'
                     }`}
                   />
                   <span>{meta.label}</span>
                   <span
-                    className={`px-1.5 py-0.2 rounded-md text-[11px] font-mono ${
-                      enabled ? 'bg-slate-950/50 text-slate-100' : 'bg-slate-900 text-slate-500'
+                    className={`px-1.5 py-0.5 rounded-md text-[11px] font-mono ${
+                      enabled ? 'bg-white/80 text-slate-800' : 'bg-slate-200/80 text-slate-500'
                     }`}
                   >
                     {count}
@@ -169,12 +169,12 @@ export function ControlsPanel({
           </div>
 
           <div className="flex flex-wrap items-center gap-4 pt-1">
-            <label className="inline-flex items-center gap-2 text-xs text-slate-300 cursor-pointer select-none">
+            <label className="inline-flex items-center gap-2 text-xs text-slate-700 cursor-pointer select-none">
               <input
                 type="checkbox"
                 checked={aadhaarFormatOnly}
                 onChange={(e) => onToggleAadhaarFormatOnly(e.target.checked)}
-                className="accent-rose-500 rounded cursor-pointer"
+                className="accent-violet-600 rounded cursor-pointer"
               />
               <span>
                 Allow Aadhaar format-only match{' '}
@@ -185,9 +185,9 @@ export function ControlsPanel({
         </div>
 
         {/* Custom Rules Builder */}
-        <div className="xl:col-span-5 flex flex-col gap-2.5 xl:border-l xl:border-slate-800/80 xl:pl-4">
+        <div className="xl:col-span-5 flex flex-col gap-2.5 xl:border-l xl:border-slate-200 xl:pl-4">
           <div className="flex items-center justify-between">
-            <h2 className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-500">
               Custom Regex / Keyword Rules
             </h2>
             <span className="text-[11px] text-slate-500">{customRules.length} configured</span>
@@ -200,31 +200,31 @@ export function ControlsPanel({
                 value={ruleName}
                 onChange={(e) => setRuleName(e.target.value)}
                 placeholder="Label (e.g. USER)"
-                className="sm:col-span-4 rounded-lg bg-slate-950 border border-slate-800 focus:border-fuchsia-500/60 outline-none px-2.5 py-1.5 text-xs text-slate-100 placeholder-slate-500"
+                className="sm:col-span-4 rounded-lg bg-slate-50 border border-slate-200 focus:border-violet-500 outline-none px-2.5 py-1.5 text-xs text-slate-800 placeholder-slate-400"
               />
               <input
                 type="text"
                 value={rulePattern}
                 onChange={(e) => setRulePattern(e.target.value)}
                 placeholder={ruleIsRegex ? 'Regex e.g. EMP-\\d{4}' : 'Exact keyword'}
-                className="sm:col-span-6 rounded-lg bg-slate-950 border border-slate-800 focus:border-fuchsia-500/60 outline-none px-2.5 py-1.5 text-xs font-mono text-slate-100 placeholder-slate-500"
+                className="sm:col-span-6 rounded-lg bg-slate-50 border border-slate-200 focus:border-violet-500 outline-none px-2.5 py-1.5 text-xs font-mono text-slate-800 placeholder-slate-400"
               />
               <button
                 type="submit"
                 disabled={!rulePattern.trim()}
-                className="sm:col-span-2 inline-flex items-center justify-center gap-1 rounded-lg bg-fuchsia-500/20 text-fuchsia-200 border border-fuchsia-500/40 hover:bg-fuchsia-500/30 disabled:opacity-40 px-2.5 py-1.5 text-xs font-medium transition cursor-pointer"
+                className="sm:col-span-2 inline-flex items-center justify-center gap-1 rounded-lg bg-violet-600 text-white hover:bg-violet-700 disabled:opacity-40 px-2.5 py-1.5 text-xs font-semibold transition cursor-pointer"
               >
                 <Plus className="w-3.5 h-3.5" />
                 Add
               </button>
             </div>
-            <div className="flex items-center gap-4 text-[11px] text-slate-400">
+            <div className="flex items-center gap-4 text-[11px] text-slate-600">
               <label className="inline-flex items-center gap-1.5 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={ruleIsRegex}
                   onChange={(e) => setRuleIsRegex(e.target.checked)}
-                  className="accent-fuchsia-500 cursor-pointer"
+                  className="accent-violet-600 cursor-pointer"
                 />
                 Use Regex
               </label>
@@ -233,7 +233,7 @@ export function ControlsPanel({
                   type="checkbox"
                   checked={ruleCaseSensitive}
                   onChange={(e) => setRuleCaseSensitive(e.target.checked)}
-                  className="accent-fuchsia-500 cursor-pointer"
+                  className="accent-violet-600 cursor-pointer"
                 />
                 Case Sensitive
               </label>
@@ -249,8 +249,8 @@ export function ControlsPanel({
                     key={rule.id}
                     className={`flex items-center justify-between gap-2 rounded-lg px-2.5 py-1.5 text-xs border ${
                       err
-                        ? 'bg-rose-950/40 border-rose-500/40 text-rose-200'
-                        : 'bg-slate-950/80 border-slate-800 text-slate-200'
+                        ? 'bg-rose-50 border-rose-300 text-rose-800'
+                        : 'bg-slate-50 border-slate-200 text-slate-700'
                     }`}
                   >
                     <label className="flex items-center gap-2 min-w-0 cursor-pointer">
@@ -258,25 +258,25 @@ export function ControlsPanel({
                         type="checkbox"
                         checked={rule.enabled}
                         onChange={() => onToggleCustomRule(rule.id)}
-                        className="accent-fuchsia-500 cursor-pointer"
+                        className="accent-violet-600 cursor-pointer"
                       />
-                      <span className="font-semibold text-fuchsia-300 shrink-0">
+                      <span className="font-semibold text-fuchsia-700 shrink-0">
                         {rule.name}
                       </span>
-                      <code className="font-mono text-[11px] text-slate-400 truncate">
+                      <code className="font-mono text-[11px] text-slate-500 truncate">
                         {rule.isRegex ? `/${rule.pattern}/` : `"${rule.pattern}"`}
                       </code>
                     </label>
                     <div className="flex items-center gap-1.5 shrink-0">
                       {err && (
-                        <span title={err.error} className="text-rose-400">
+                        <span title={err.error} className="text-rose-600">
                           <AlertTriangle className="w-3.5 h-3.5" />
                         </span>
                       )}
                       <button
                         type="button"
                         onClick={() => onDeleteCustomRule(rule.id)}
-                        className="text-slate-500 hover:text-rose-400 transition cursor-pointer"
+                        className="text-slate-400 hover:text-rose-600 transition cursor-pointer"
                         title="Delete rule"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
@@ -289,7 +289,7 @@ export function ControlsPanel({
           )}
 
           {customRuleErrors.length > 0 && (
-            <div className="flex items-center gap-1.5 text-[11px] text-rose-300">
+            <div className="flex items-center gap-1.5 text-[11px] text-rose-700">
               <ShieldAlert className="w-3.5 h-3.5 shrink-0" />
               <span>Invalid regex in rule: {customRuleErrors[0].error}</span>
             </div>
