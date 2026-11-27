@@ -14,7 +14,7 @@ import { SAMPLE_CSV_TEXT, SAMPLE_RAW_TEXT } from '../utils/sampleData.js';
 import { InputPanel } from '../components/InputPanel.jsx';
 import { ControlsPanel } from '../components/ControlsPanel.jsx';
 import { AuditSummary } from '../components/AuditSummary.jsx';
-import { SideBySideDiff } from '../components/SideBySideDiff.jsx';
+import { SanitizedOutput } from '../components/SanitizedOutput.jsx';
 
 function triggerBrowserDownload(filename, content, mimeType) {
   const blob = new Blob([content], { type: mimeType });
@@ -257,11 +257,9 @@ export function DetectorPage() {
           onExportPseudonyms={handleExportPseudonyms}
         />
 
-        <SideBySideDiff
-          isCsvMode={isCsvMode}
-          rawText={rawText}
-          textSegments={isCsvMode ? [] : textPipeline.redacted.segments}
+        <SanitizedOutput
           sanitizedText={sanitizedOutput}
+          isCsvMode={isCsvMode}
           csvResult={csvPipeline || { headers: [], cellDiffs: [] }}
           selectedColumns={activeSelectedColumns}
         />
